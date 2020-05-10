@@ -1,2 +1,2 @@
-# online-flower-shopping-system
+# florabasket
 Online flower shopping system backend application
