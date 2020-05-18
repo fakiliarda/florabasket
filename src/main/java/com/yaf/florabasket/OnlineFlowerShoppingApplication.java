@@ -1,4 +1,4 @@
-package com.yaf.onlineflowershopping;
+package com.yaf.florabasket;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
