@@ -61,6 +61,7 @@
 
     <!-- Header Area Start -->
     <header class="header-area clearfix">
+
         <div>
             <ul>
                 <li><span style="color: #1c7430" th:utext="${username}"></span></li>
@@ -80,8 +81,13 @@
         <!-- Amado Nav -->
         <nav class="amado-nav">
             <ul>
-                <!--                    <li><a th:href="@{home}">Home</a></li>-->
-                <li class="active"><a th:href="@{home}">Assigned orders</a></li>
+                <li><a th:href="@{home}">Home</a></li>
+                <li class="active"><a th:href="@{seller_order}">Orders</a></li>
+                <li><a th:href="@{release}">Release Flower</a></li>
+
+                <!--                    <li><a th:href="@{shop}">Shop</a></li>-->
+                <!--                    <li><a th:href="@{cart}">Cart</a></li>-->
+                <!--                    <li><a th:href="@{checkout}">Checkout</a></li>-->
             </ul>
         </nav>
         <!-- Button Group -->
@@ -91,19 +97,21 @@
         <!-- Cart Menu -->
         <div class="cart-fav-search mb-100">
             <a th:href="@{login}" class="cart-nav"><img src="img/core-img/login_logo.png" alt=""> Login</a>
-            <a th:href="@{signup}" class="cart-nav"><img src="img/core-img/signup_logo.png" alt=""> Signup</a>
-            <a th:href="@{signup_seller}" class="cart-nav"><img src="img/core-img/application.png" alt=""> Application
-                Form</a>
-            <!--                <a th:href="@{settings}" class="cart-nav"><img src="img/core-img/settings.png" alt=""> Settings</a>-->
+
+            <!--                <a th:href="@{login}" class="cart-nav"><img src="img/core-img/login_logo.png" alt=""> Login</a>-->
+            <!--                <a th:href="@{signup}" class="cart-nav"><img src="img/core-img/signup_logo.png" alt=""> Signup</a>-->
+            <!--                <a th:href="@{signup_seller}" class="cart-nav"><img src="img/core-img/application.png" alt=""> Application   Form</a>-->
+            <!--                <a th:href="@{c_order_list}" class="cart-nav"><img src="img/core-img/settings.png" alt=""> Settings</a>-->
             <!--                <a href="#" class="fav-nav"><img src="img/core-img/favorites.png" alt=""> Favourite</a>-->
             <!--                <a href="#" class="search-nav"><img src="img/core-img/search.png" alt=""> Search</a>-->
         </div>
         <!-- Social Button -->
         <div class="social-info d-flex justify-content-between">
-            <!--                <a href="https://tr.pinterest.com/search/pins/?rs=ac&len=2&q=flowers&eq=flower&etslf=4324&term_meta[]=flowers%7Cautocomplete%7C0"><i class="fa fa-pinterest" aria-hidden="true"></i></a>-->
-            <!--                <a href="https://www.instagram.com/"><i class="fa fa-instagram" aria-hidden="true"></i></a>-->
-            <!--                <a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a>-->
-            <!--                <a href="https://www.twitter.com/"><i class="fa fa-twitter" aria-hidden="true"></i></a>-->
+            <a href="https://tr.pinterest.com/search/pins/?rs=ac&len=2&q=flowers&eq=flower&etslf=4324&term_meta[]=flowers%7Cautocomplete%7C0"><i
+                    class="fa fa-pinterest" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://www.twitter.com/"><i class="fa fa-twitter" aria-hidden="true"></i></a>
         </div>
     </header>
     <!-- Header Area End -->
@@ -113,130 +121,145 @@
             <div class="row">
                 <div class="col-12 col-lg-8">
                     <div class="cart-title mt-50">
-                        <h2>Assigned Orders</h2>
+                        <h2>Order List</h2>
                     </div>
 
                     <div class="cart-table clearfix">
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th></th>
-                                <th>Seller</th>
+                                <th>Client</th>
+                                <th>Flower</th>
+                                <th>Payment</th>
                                 <th>Status</th>
-                                <th>Quantity</th>
+
                             </tr>
                             </thead>
                             <tbody>
 
-
                             <div class="list-group" th:each="order : ${orders}">
-
-
                                 <tr class='clickable-row'
-                                    th:style="${order.deliveryStatus} == DELIVERED ? 'background: green' : 'left: 0px'"
-                                    th:onclick="'window.location.href = \'' + @{/c_order_list/{id}(id=${order.id})} + '\''"
-                                    style="cursor: pointer">
+                                    th:onclick="'window.location.href = \'' + @{/seller_order/{id}(id=${order.id})} + '\''" style="cursor: pointer">
                                     <td class="cart_product_img">
                                         <a href="#"><img th:src="${order.flower?.imagelink}" alt="Product"></a>
                                     </td>
                                     <td class="price">
-                                        <h5><span th:text="${order.seller?.firstname}"></span></h5>
-                                        <p><span th:text="${order.seller?.website}"></span></p>
-                                        <p><span th:text="${order.flower?.name}"></span></p>
+                                        <h5><span th:text="${order.client?.firstname}"></span></h5>
+                                        <p><span th:text="${order.client?.phoneNumber}"></span></p>
                                     </td>
                                     <td class="cart_product_desc">
-                                        <p><span th:text="${order.status}"></span></p>
+                                        <p><span th:text="${order.flower?.name}"></span><span>(</span><span
+                                                th:text="${order.flower?.price}"></span><span>)</span></p>
+                                        <!--                                            <p></p>-->
                                     </td>
                                     <td class="qty">
                                         <div class="qty-btn d-flex">
-                                            <p><span th:text="${order.quantity}"></span></p>
+                                            <p><span th:text="${order.status}"></span></p>
                                         </div>
                                     </td>
                                 </tr>
                             </div>
 
-
                             </tbody>
                         </table>
+
+
+
                     </div>
+
+
                 </div>
+
                 <div class="col-12 col-lg-4">
 
+                    <div class="cart-summary" th:object="${couriers}">
+                        <form th:action="@{seller_order/assign/{id}(id=${id})}" th:object="${orderToAssign}" method="post">
 
-                    <div class="cart-summary" th:object="${orderToResponse}">
-                        <form th:action="@{c_order_list/response/{id}(id=${id})}" th:object="${orderToResponse}"
-                              method="post">
-
-                            <div th:if="${orderToResponse.id != null}">
+                            <div th:if="${orderToAssign.id != null}">
 
 
-                                <h5>Response Seller</h5>
+                                <h5>Assign Order</h5>
                                 <ul class="summary-table">
-                                    <li><span>Delivery details:</span>
+                                    <li><span>Order details:</span>
                                         <span>
                                         <ul>
-                                            <li>Client: <span
-                                                    th:text="${orderToResponse.client?.firstname}"></span></li>
-                                            <li>Order ID: <span th:text="${orderToResponse.id}"></span></li>
-                                            <li>Flower: <span th:text="${orderToResponse.flower?.name}"></span></li>
-                                            <li>Quantity: <span th:text="${orderToResponse.quantity}"></span></li>
-                                            <li>Address: <span th:text="${orderToResponse.address}"></span></li>
+                                            <li>Client: <span th:text="${orderToAssign.client?.firstname}"></span></li>
+                                            <li>Order ID: <span th:text="${orderToAssign.id}"></span></li>
+                                            <li>Flower: <span th:text="${orderToAssign.flower?.name}"></span></li>
+                                            <li>Quantity: <span th:text="${orderToAssign.quantity}"></span></li>
+                                            <li>Status: <span th:text="${orderToAssign.status}"></span></li>
 
                                         </ul>
                                     </span>
                                     </li>
                                     <li>
+                                        <div class="col-10 mb-3">
 
-                                        <div th:switch="${orderToResponse.status}">
+                                            <div th:switch="${orderToAssign.status}">
+                                                <div th:case="'Not Assigned'">
+                                                    <select class="w-100" id="courierToAssign" th:field="*{courier.id}">
+                                                        <option th:each="courier : ${couriers}" th:value="${courier.id}"
+                                                                th:text="${courier.firstname}"></option>
+                                                    </select>
+                                                </div>
+                                                <div th:case="'PENDING'">
 
+                                                </div>
+                                                <div th:case="'ACCEPTED'">
+
+                                                </div>
+                                                <div th:case="'REJECTED'">
+                                                    <select class="w-100" id="courierToAssignRejected" th:field="*{courier.id}">
+                                                        <option th:each="courier : ${couriers}" th:value="${courier.id}"
+                                                                th:text="${courier.firstname}"></option>
+                                                    </select>
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+                                    </li>
+                                    <li>
+
+                                        <div th:switch="${orderToAssign.status}">
+
+                                            <div th:case="'Not Assigned'">
+                                                <div class="col-6 mb-3">
+                                                    <button type="submit" class="btn amado-btn">Assign</button>
+                                                </div>
+                                            </div>
                                             <div th:case="'PENDING'">
-                                                <div class="cart-btn mt-100">
-                                                    <button type="submit" class="btn amado-btn w-100" name="action"
-                                                            value="ACCEPTED">Accept
-                                                    </button>
-                                                    <button type="submit" class="btn amado-btn w-100" name="action"
-                                                            value="REJECTED">Reject
-                                                    </button>
-                                                </div>
-
-                                                <!--                                                    <h5 style="color:orange;">Pending</h5>-->
-                                                <!--                                                    <p>Delivery is assigned to: <span th:text="${orderToResponse.courier?.firstname}"></span></p>-->
+                                                <h5 style="color:orange;">Pending</h5>
+                                                <p>Delivery is assigned to: <span th:text="${orderToAssign.courier?.firstname}"></span></p>
                                             </div>
-
-                                            <div th:case="'REJECTED'">
-                                                <div class="cart-btn mt-100">
-                                                    <h5 style="color:red;">Rejected</span></h5>
-                                                </div>
-
-                                                <!--                                                    <h5 style="color:orange;">Pending</h5>-->
-                                                <!--                                                    <p>Delivery is assigned to: <span th:text="${orderToResponse.courier?.firstname}"></span></p>-->
-                                            </div>
-
                                             <div th:case="'ACCEPTED'">
-                                                <div th:switch="${orderToResponse.deliveryStatus}">
-                                                    <div th:case="'ON ROAD'">
-                                                        <h5 style="color:green;">Accepted</span></h5>
-                                                        <button type="submit" class="btn amado-btn w-100" name="action"
-                                                                value="DELIVERED">Complete Delivery
-                                                        </button>
-                                                    </div>
-                                                    <div th:case="'DELIVERED'">
-                                                        <h5 style="color:green;">Delivery Completed.</span></h5>
-                                                    </div>
+                                                <h5 style="color:green;">Accepted by: <span th:text="${orderToAssign.courier?.firstname}"></span></h5>
+                                                <p>Delivery Status: <span th:text="${orderToAssign.deliveryStatus}"></span></p>
+                                            </div>
+                                            <div th:case="'REJECTED'">
+                                                <h5 style="color:red;">Rejected by: <span th:text="${orderToAssign.courier?.firstname}"></span></h5>
+                                                <br>
+                                                <p>Assign order again:</p>
+                                                <div class="col-10 mb-3">
+                                                    <button type="submit" class="btn amado-btn">Assign</button>
                                                 </div>
-
                                             </div>
 
                                         </div>
 
+
+
                                     </li>
                                 </ul>
 
+
+
                             </div>
                             <!-- ELSE -->
-                            <div th:unless="${orderToResponse.id != null}">
+                            <div th:unless="${orderToAssign.id != null}">
 
-                                <p>Please select an assigned order to response</p>
+                                <p>Please select an order to assign a courier from table</p>
 
                             </div>
 
@@ -244,8 +267,8 @@
 
                     </div>
 
-
                 </div>
+
             </div>
         </div>
     </div>
@@ -326,8 +349,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 </footer>
 <!-- ##### Footer Area End ##### -->
 

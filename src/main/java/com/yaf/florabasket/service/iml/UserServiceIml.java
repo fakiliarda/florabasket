@@ -1,6 +1,7 @@
 package com.yaf.florabasket.service.iml;
 
 import com.yaf.florabasket.model.Cart;
+import com.yaf.florabasket.model.Flower;
 import com.yaf.florabasket.model.Role;
 import com.yaf.florabasket.model.User;
 import com.yaf.florabasket.repository.CartRepository;
@@ -10,6 +11,8 @@ import com.yaf.florabasket.security.Roles;
 import com.yaf.florabasket.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -90,6 +93,23 @@ public class UserServiceIml implements UserService {
     @Override
     public void delete(Long id) {
         userRepository.delete(userRepository.getOne(id));
+    }
+
+    @Override
+    public List<User> listAllSellersByFlower(Flower flower) {
+        return userRepository.findAllByFlowers(flower);
+    }
+
+    @Override
+    public void createProduct(Flower flower) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User seller = findByEmail(auth.getName());
+        seller.setFlowers(new HashSet<Flower>(Arrays.asList(flower)));
+    }
+
+    @Override
+    public List<User> listAllCouriers() {
+        return userRepository.findAllByRoles(roleRepository.findByRole(Roles.COURIER.toString()));
     }
 
 }

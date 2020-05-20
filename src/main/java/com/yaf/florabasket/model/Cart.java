@@ -33,4 +33,8 @@ public class Cart {
     @Setter
     private Set<Orders> orders;
 
+    @Getter
+    @Setter
+    private Integer total;
+
 }

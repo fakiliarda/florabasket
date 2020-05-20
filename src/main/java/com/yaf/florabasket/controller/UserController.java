@@ -118,14 +118,13 @@ public class UserController {
                     .getAuthorities()
                     .stream()
                     .anyMatch(r -> r.getAuthority().equals(Roles.SELLER.toString()))) {
-                viewName = "flowerSeller_index";
+                viewName = "/flowerSeller_index";
             } else if (authentication
                     .getAuthorities()
                     .stream()
                     .anyMatch(r -> r.getAuthority().equals(Roles.COURIER.toString()))){
-                viewName = "c_order_list";
+                viewName = "redirect:/c_order_list";
             }
-
         }
 
         model.addObject("flowers", flowerService.listAll());
@@ -135,10 +134,8 @@ public class UserController {
     }
 
     @RequestMapping(value = {"/access_denied"}, method = RequestMethod.GET)
-    public ModelAndView accessDenied() {
-        ModelAndView model = new ModelAndView();
-        model.setViewName("errors/access_denied");
-        return model;
+    public String accessDenied() {
+        return "errors/access_denied";
     }
 
 

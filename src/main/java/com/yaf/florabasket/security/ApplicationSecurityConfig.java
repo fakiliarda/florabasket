@@ -49,29 +49,36 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "index", "/css/**", "/js/**", "/img/**", "/img/**", "/scss/**", "/fonts/**", "/shop/**", "/home/**").permitAll()
+                .antMatchers("/", "index", "/css/**", "/js/**", "/img/**", "/img/**", "/scss/**", "/fonts/**", "/home/**", "/shop/**").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/signup").permitAll()
                 .antMatchers("/signup_seller").permitAll()
                 .antMatchers("/order/**").hasAuthority(Roles.CLIENT.toString())
                 .antMatchers("/cart/**").hasAuthority(Roles.CLIENT.toString())
                 .antMatchers("/product_details/**").hasAuthority(Roles.CLIENT.toString())
+//                .antMatchers("/shop/**").hasAuthority(Roles.CLIENT.toString())
                 .antMatchers("/c_order_list/**").hasAuthority(Roles.COURIER.toString())
                 .antMatchers("/flowerSeller_index/**").hasAuthority(Roles.SELLER.toString())
-
+                .antMatchers("/seller_order/**").hasAuthority(Roles.SELLER.toString())
+                .antMatchers("/release/**").hasAuthority(Roles.SELLER.toString())
                 .anyRequest().authenticated()
                 .and().csrf().disable()
                 .formLogin().loginPage("/login").failureUrl("/login?error=true")
                 .defaultSuccessUrl("/home")
+                .successHandler((req, res, auth) -> {    //Success handler invoked after successful authentication
+                    res.sendRedirect("/"); // Redirect user to index/home page
+                })
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .and().logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/home")
+                .logoutSuccessUrl("/home");
+
+
 //                .and().rememberMe()
 //                .tokenRepository(persistentTokenRepository())
 //                .tokenValiditySeconds(60 * 60)
-                .and().exceptionHandling().accessDeniedPage("/access_denied");
+//                .and().exceptionHandling().accessDeniedPage("/access_denied");
 
 
 //        http

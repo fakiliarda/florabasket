@@ -73,8 +73,19 @@ public class Flower {
     @Setter
     private String explanation;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "flower_seller", joinColumns = @JoinColumn(name = "seller_id"), inverseJoinColumns = @JoinColumn(name = "flower_id"))
+    @Column(name="color")
+    @Getter
+    @Setter
+    private String color;
+
+    @Column(name="category")
+    @Getter
+    @Setter
+    private String category;
+
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "flower_seller", joinColumns = @JoinColumn(name = "flower_id"), inverseJoinColumns = @JoinColumn(name = "seller_id"))
     @Getter
     @Setter
     private Set<User> sellers;

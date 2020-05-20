@@ -1,6 +1,11 @@
 package com.yaf.florabasket.controller;
 
-import com.yaf.florabasket.model.*;
+import com.yaf.florabasket.model.Flower;
+import com.yaf.florabasket.model.User;
+import com.yaf.florabasket.model.flower.FilterProperties;
+import com.yaf.florabasket.model.flower.FlowerCategory;
+import com.yaf.florabasket.model.flower.FlowerColor;
+import com.yaf.florabasket.model.flower.FlowerName;
 import com.yaf.florabasket.service.CartService;
 import com.yaf.florabasket.service.FlowerService;
 import com.yaf.florabasket.service.OrdersService;
@@ -10,15 +15,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -42,72 +44,171 @@ public class PublicController {
         this.cartService = cartService;
     }
 
-    @RequestMapping(value = "/checkout")
-    public String checkout() {
-        return "checkout";
-    }
-
 
     @RequestMapping(value = {"/shop"}, method = RequestMethod.GET)
-    public ModelAndView shop() {
+    public ModelAndView shop(@ModelAttribute("value") String value, @ModelAttribute("filter") String filter) {
+
         ModelAndView model = new ModelAndView();
-        model.addObject("flowers", flowerService.listAll());
-        model.setViewName("/shop");
-        return model;
-    }
-
-
-    @RequestMapping(value = "/product_details", method = RequestMethod.GET)
-    public ModelAndView product(@ModelAttribute("flowerId") String flowerId) {
-
-        ModelAndView modelAndView;
-        try {
-            modelAndView = new ModelAndView();
-            Flower flowerExist = flowerService.findById(Long.valueOf(flowerId));
-            modelAndView.addObject("flower", flowerExist);
-            modelAndView.addObject("orders", new Orders());
-        } catch (Exception exc) {
-            return new ModelAndView("/home");
-        }
-        return modelAndView;
-    }
-
-    @RequestMapping(value = {"/cart"}, method = RequestMethod.GET)
-    public ModelAndView cart() {
-        ModelAndView model = new ModelAndView();
-
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findByEmail(auth.getName());
-
-        Cart cart = cartService.findByUser(user);
-        List<Orders> ordersList = ordersService.findAllByCart(cart);
         List<Flower> flowerList = new ArrayList<>();
+        String activeElement = "";
 
-        for (Orders orders : ordersList) {
-            flowerList.add(orders.getFlower());
+        if (filter.isEmpty()) {
+
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            User user = userService.findByEmail(auth.getName());
+            if (user != null) {
+                model.addObject("username", user.getFirstname() + " " + (user.getSurname() != null ? user.getSurname() : (user.isSeller() ? "(Seller)" : "(Courier)")));
+                model.addObject("signout", "Sign out");
+            }
+            flowerList = flowerService.listAll();
+
+        } else {
+            switch (filter) {
+                case FilterProperties.COLOR:
+                    flowerList = flowerService.findAllByColor(value);
+                    break;
+                case FilterProperties.CATEGORY:
+                    flowerList = flowerService.findAllByCategory(value);
+                    break;
+                case FilterProperties.NAME:
+                    flowerList = flowerService.findAllByName(value);
+                    break;
+            }
+            activeElement = value;
         }
 
+        model.addObject("activeElement", activeElement);
         model.addObject("flowers", flowerList);
-        model.addObject("user", user);
-        model.addObject("orders", Arrays.asList(cart.getOrders()));
+        model.setViewName("/shop");
 
-        model.setViewName("/cart");
         return model;
     }
 
-    @RequestMapping(value = {"/product_details/save/{flowerId}"}, method = RequestMethod.POST)
-    public String addOrderToCart(@Valid Orders orders, @PathVariable("flowerId") Long flowerId) {
-        orders.setFlower(flowerService.findById(flowerId));
-        ordersService.createOrder(orders);
-        return "redirect:/cart";
+    @RequestMapping(value = {"/shop/filter/white"}, method = RequestMethod.GET)
+    public String shopFilterWhite(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("filter", FilterProperties.COLOR);
+        redirectAttributes.addFlashAttribute("value", FlowerColor.WHITE.getText());
+        return "redirect:/shop";
+    }
+
+    @RequestMapping(value = {"/shop/filter/gray"}, method = RequestMethod.GET)
+    public String shopFilterGray(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("filter", FilterProperties.COLOR);
+        redirectAttributes.addFlashAttribute("value", FlowerColor.GRAY.getText());
+        return "redirect:/shop";
+    }
+
+    @RequestMapping(value = {"/shop/filter/black"}, method = RequestMethod.GET)
+    public String shopFilterBlack(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("filter", FilterProperties.COLOR);
+        redirectAttributes.addFlashAttribute("value", FlowerColor.BLACK.getText());
+        return "redirect:/shop";
+    }
+
+    @RequestMapping(value = {"/shop/filter/blue"}, method = RequestMethod.GET)
+    public String shopFilterBlue(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("filter", FilterProperties.COLOR);
+        redirectAttributes.addFlashAttribute("value", FlowerColor.BLUE.getText());
+        return "redirect:/shop";
+    }
+
+    @RequestMapping(value = {"/shop/filter/red"}, method = RequestMethod.GET)
+    public String shopFilterRed(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("filter", FilterProperties.COLOR);
+        redirectAttributes.addFlashAttribute("value", FlowerColor.RED.getText());
+        return "redirect:/shop";
+    }
+
+    @RequestMapping(value = {"/shop/filter/yellow"}, method = RequestMethod.GET)
+    public String shopFilterYellow(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("filter", FilterProperties.COLOR);
+        redirectAttributes.addFlashAttribute("value", FlowerColor.YELLOW.getText());
+        return "redirect:/shop";
+    }
+
+    @RequestMapping(value = {"/shop/filter/orange"}, method = RequestMethod.GET)
+    public String shopFilterOrange(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("filter", FilterProperties.COLOR);
+        redirectAttributes.addFlashAttribute("value", FlowerColor.ORANGE.getText());
+        return "redirect:/shop";
+    }
+
+    @RequestMapping(value = {"/shop/filter/brown"}, method = RequestMethod.GET)
+    public String shopFilterBrown(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("filter", FilterProperties.COLOR);
+        redirectAttributes.addFlashAttribute("value", FlowerColor.BROWN.getText());
+        return "redirect:/shop";
+    }
+
+    @RequestMapping(value = {"/shop/filter/bonsai"}, method = RequestMethod.GET)
+    public String shopFilterBonsai(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("filter", FilterProperties.CATEGORY);
+        redirectAttributes.addFlashAttribute("value", FlowerCategory.BONSAI.getText());
+        return "redirect:/shop";
+    }
+
+    @RequestMapping(value = {"/shop/filter/bouqet"}, method = RequestMethod.GET)
+    public String shopFilterBouqet(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("filter", FilterProperties.CATEGORY);
+        redirectAttributes.addFlashAttribute("value", FlowerCategory.BOUQUET.getText());
+        return "redirect:/shop";
+    }
+
+    @RequestMapping(value = {"/shop/filter/giftbox"}, method = RequestMethod.GET)
+    public String shopFilterGiftbox(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("filter", FilterProperties.CATEGORY);
+        redirectAttributes.addFlashAttribute("value", FlowerCategory.GIFT_BOX.getText());
+        return "redirect:/shop";
+    }
+
+    @RequestMapping(value = {"/shop/filter/homedeco"}, method = RequestMethod.GET)
+    public String shopFilterHomeDeco(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("filter", FilterProperties.CATEGORY);
+        redirectAttributes.addFlashAttribute("value", FlowerCategory.HOME_DECO.getText());
+        return "redirect:/shop";
+    }
+
+    @RequestMapping(value = {"/shop/filter/plantswithpot"}, method = RequestMethod.GET)
+    public String shopFilterPlantsWithPot(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("filter", FilterProperties.CATEGORY);
+        redirectAttributes.addFlashAttribute("value", FlowerCategory.PLANTS_WITH_POT.getText());
+        return "redirect:/shop";
+    }
+
+    @RequestMapping(value = {"/shop/filter/orkid"}, method = RequestMethod.GET)
+    public String shopFilterOrkid(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("filter", FilterProperties.NAME);
+        redirectAttributes.addFlashAttribute("value", FlowerName.ORKID.getText());
+        return "redirect:/shop";
+    }
+
+    @RequestMapping(value = {"/shop/filter/acer"}, method = RequestMethod.GET)
+    public String shopFilterAcer(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("filter", FilterProperties.NAME);
+        redirectAttributes.addFlashAttribute("value", FlowerName.ACER_BOMSAI.getText());
+        return "redirect:/shop";
+    }
+
+    @RequestMapping(value = {"/shop/filter/krizantem"}, method = RequestMethod.GET)
+    public String shopFilterKrizantem(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("filter", FilterProperties.NAME);
+        redirectAttributes.addFlashAttribute("value", FlowerName.KRIZANTEM.getText());
+        return "redirect:/shop";
     }
 
 
+    @RequestMapping(value = {"/shop/filter/daisy"}, method = RequestMethod.GET)
+    public String shopFilterDaisy(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("filter", FilterProperties.NAME);
+        redirectAttributes.addFlashAttribute("value", FlowerName.DAISY.getText());
+        return "redirect:/shop";
+    }
 
-    @RequestMapping(value = {"/product_details/{flowerId}"}, method = RequestMethod.GET)
-    public String productDetails(RedirectAttributes redirectAttributes, @PathVariable("flowerId") Long flowerId) {
-        redirectAttributes.addFlashAttribute("flowerId", flowerId);
-        return "redirect:/product_details";
+    @RequestMapping(value = {"/shop/filter/guzmania"}, method = RequestMethod.GET)
+    public String shopFilterGuzmania(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("filter", FilterProperties.NAME);
+        redirectAttributes.addFlashAttribute("value", FlowerName.GUZMANIA.getText());
+        return "redirect:/shop";
     }
 
 }

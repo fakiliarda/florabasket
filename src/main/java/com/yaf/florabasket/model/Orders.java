@@ -40,17 +40,23 @@ public class Orders {
     @Setter
     private Cart cart;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne/*(cascade = CascadeType.ALL)*/
     @JoinColumn(name = "courier_id", referencedColumnName = "id")
     @Getter
     @Setter
     private User courier;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne/*(cascade = CascadeType.ALL)*/
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     @Getter
     @Setter
     private User client;
+
+    @ManyToOne/*(cascade = CascadeType.ALL)*/
+    @JoinColumn(name = "seller_id", referencedColumnName = "id")
+    @Getter
+    @Setter
+    private User seller;
 
     @Column(name = "status")
     @Getter
@@ -81,5 +87,15 @@ public class Orders {
     @Getter
     @Setter
     private String paymentMethod;
+
+    @Column(name = "paymentCompleted")
+    @Getter
+    @Setter
+    private Boolean paymentCompleted;
+
+    @Column(name = "deliveryStatus")
+    @Getter
+    @Setter
+    private String deliveryStatus;
 
 }

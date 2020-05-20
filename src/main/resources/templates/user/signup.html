@@ -72,9 +72,9 @@
         <nav class="amado-nav">
             <ul>
                 <li><a th:href="@{home}">Home</a></li>
-                <li><a th:href="@{shop}">Shop</a></li>
-                <li><a th:href="@{cart}">Cart</a></li>
-                <li class="activate"><a th:href="@{checkout}">Checkout</a></li>
+<!--                <li><a th:href="@{shop}">Shop</a></li>-->
+<!--                <li><a th:href="@{cart}">Cart</a></li>-->
+<!--                <li class="activate"><a th:href="@{checkout}">Checkout</a></li>-->
             </ul>
         </nav>
         <!-- Button Group -->
@@ -86,7 +86,7 @@
             <a th:href="@{login}" class="cart-nav"><img src="img/core-img/login_logo.png" alt=""> Login</a>
             <a th:href="@{signup}" class="cart-nav"><img src="img/core-img/signup_logo.png" alt=""> Signup</a>
             <a th:href="@{signup_seller}" class="cart-nav"><img src="img/core-img/application.png" alt=""> Application Form</a>
-            <a th:href="@{settings}" class="cart-nav"><img src="img/core-img/settings.png" alt=""> Settings</a>
+<!--            <a th:href="@{settings}" class="cart-nav"><img src="img/core-img/settings.png" alt=""> Settings</a>-->
             <a href="#" class="fav-nav"><img src="img/core-img/favorites.png" alt=""> Favourite</a>
             <a href="#" class="search-nav"><img src="img/core-img/search.png" alt=""> Search</a>
         </div>
@@ -144,7 +144,7 @@
 <!--                                    </select>-->
 <!--                                </div>-->
                                 <div class="col-12 mb-3">
-                                    <input type="text" th:field="*{phoneNumber}" class="form-control mb-3" id="phone_number" placeholder="Phone Number" value="">
+                                    <input type="number" th:field="*{phoneNumber}" class="form-control mb-3" id="phone_number" placeholder="Phone Number" value="" required>
                                 </div>
 
                                 <div class="col-12 mb-3">

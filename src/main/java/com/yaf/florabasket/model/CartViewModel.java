@@ -1,5 +1,6 @@
 package com.yaf.florabasket.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
@@ -8,6 +9,7 @@ import lombok.Data;
  */
 
 @Data
+@AllArgsConstructor
 public class CartViewModel {
 
     private Flower flower;

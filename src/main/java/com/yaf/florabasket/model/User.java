@@ -19,7 +19,8 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @TableGenerator(name = "fbuser_id_gen", initialValue = 15)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "fbuser_id_gen")
     @Column(name="id")
     @Getter
     @Setter
@@ -94,5 +95,10 @@ public class User {
     @Getter
     @Setter
     private Cart cart;
+
+    @ManyToMany(mappedBy = "sellers", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @Getter
+    @Setter
+    private Set<Flower> flowers;
 
 }

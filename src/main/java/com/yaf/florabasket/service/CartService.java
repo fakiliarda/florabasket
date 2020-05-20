@@ -11,4 +11,6 @@ public interface CartService {
 
     Cart findByUser(User client);
 
+    Cart getCartWithTotalPrice();
+
 }

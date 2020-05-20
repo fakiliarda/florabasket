@@ -1,11 +1,11 @@
 package com.yaf.florabasket.repository;
 
 import com.yaf.florabasket.model.Flower;
+import com.yaf.florabasket.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author ardafakili
@@ -16,6 +16,14 @@ public interface FlowerRepository extends JpaRepository<Flower, Long> {
 
     List<Flower> findBy();
 
-    Optional<Flower> findById(Long id);
+    List<Flower> findAllBySellers(User seller);
+
+    List<Flower> findAll();
+
+    List<Flower> findAllByColor(String color);
+
+    List<Flower> findAllByCategory(String category);
+
+    List<Flower> findAllByName(String name);
 
 }

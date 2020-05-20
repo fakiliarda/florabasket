@@ -22,234 +22,330 @@
 </head>
 
 <body>
-    <!-- Search Wrapper Area Start -->
-    <div class="search-wrapper section-padding-100">
-        <div class="search-close">
-            <i class="fa fa-close" aria-hidden="true"></i>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="search-content">
-                        <form action="#" method="get">
-                            <input type="search" name="search" id="search" placeholder="Type your keyword...">
-                            <button type="submit"><img src="img/core-img/search.png" alt=""></button>
-                        </form>
-                    </div>
+<!-- Search Wrapper Area Start -->
+<div class="search-wrapper section-padding-100">
+    <div class="search-close">
+        <i class="fa fa-close" aria-hidden="true"></i>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="search-content">
+                    <form action="#" method="get">
+                        <input type="search" name="search" id="search" placeholder="Type your keyword...">
+                        <button type="submit"><img src="img/core-img/search.png" alt=""></button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Search Wrapper Area End -->
+</div>
+<!-- Search Wrapper Area End -->
 
-    <!-- ##### Main Content Wrapper Start ##### -->
-    <div class="main-content-wrapper d-flex clearfix">
+<!-- ##### Main Content Wrapper Start ##### -->
+<div class="main-content-wrapper d-flex clearfix">
 
-        <!-- Mobile Nav (max width 767px)-->
-        <div class="mobile-nav">
-            <!-- Navbar Brand -->
-            <div class="amado-navbar-brand">
-                <a th:href="@{home}"><img src="img/core-img/logo.png" alt=""></a>
-            </div>
-            <!-- Navbar Toggler -->
-            <div class="amado-navbar-toggler">
-                <span></span><span></span><span></span>
-            </div>
+    <!-- Mobile Nav (max width 767px)-->
+    <div class="mobile-nav">
+        <!-- Navbar Brand -->
+        <div class="amado-navbar-brand">
+            <a th:href="@{home}"><img src="img/core-img/logo.png" alt=""></a>
         </div>
+        <!-- Navbar Toggler -->
+        <div class="amado-navbar-toggler">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
 
 
-        <!-- Header Area Start -->
-        <header class="header-area clearfix">
-            <!-- Close Icon -->
-            <div class="nav-close">
-                <i class="fa fa-close" aria-hidden="true"></i>
-            </div>
-            <!-- Logo -->
-            <div class="logo">
-                <a th:href="@{home}"><img src="img\core-img\Logom2.png" alt=""></a>
-            </div>
-            <!-- Amado Nav -->
-            <nav class="amado-nav">
+    <!-- Header Area Start -->
+    <header class="header-area clearfix">
+
+        <div>
+            <ul>
+                <li><span style="color: #1c7430" th:utext="${username}"></span></li>
+                <li>
+                    <a th:href="@{/logout}"> <span th:utext="${signout}"></span></a>
+                </li>
+            </ul>
+        </div>
+        <!-- Close Icon -->
+        <div class="nav-close">
+            <i class="fa fa-close" aria-hidden="true"></i>
+        </div>
+        <!-- Logo -->
+        <div class="logo">
+            <a th:href="@{home}"><img src="img\core-img\Logom2.png" alt=""></a>
+        </div>
+        <!-- Amado Nav -->
+        <nav class="amado-nav">
+            <ul>
+                <li><a th:href="@{home}">Home</a></li>
+                <li><a th:href="@{order}">My Orders</a></li>
+                <li class="active"><a th:href="@{shop}">Shop</a></li>
+                <li><a th:href="@{cart}">Cart</a></li>
+                <!--                    <li><a th:href="@{checkout}">Checkout</a></li>-->
+            </ul>
+        </nav>
+        <!-- Button Group -->
+        <!--<div class="amado-btn-group mt-30 mb-100"> -->
+        <!-- Button Group     <a href="#" class="btn amado-btn mb-15">%Discount%</a> -->
+        <!--</div>-->
+        <!-- Cart Menu -->
+        <div class="cart-fav-search mb-100">
+            <a th:href="@{login}" class="cart-nav"><img src="img/core-img/login_logo.png" alt=""> Login</a>
+            <a th:href="@{signup}" class="cart-nav"><img src="img/core-img/signup_logo.png" alt=""> Signup</a>
+            <a th:href="@{signup_seller}" class="cart-nav"><img src="img/core-img/application.png" alt=""> Application
+                Form</a>
+            <!--                <a th:href="@{settings}" class="cart-nav"><img src="img/core-img/settings.png" alt=""> Settings</a>-->
+            <a href="#" class="fav-nav"><img src="img/core-img/favorites.png" alt=""> Favourite</a>
+            <a href="#" class="search-nav"><img src="img/core-img/search.png" alt=""> Search</a>
+        </div>
+        <!-- Social Button -->
+        <div class="social-info d-flex justify-content-between">
+            <a href="https://tr.pinterest.com/search/pins/?rs=ac&len=2&q=flowers&eq=flower&etslf=4324&term_meta[]=flowers%7Cautocomplete%7C0"><i
+                    class="fa fa-pinterest" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://www.twitter.com/"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        </div>
+    </header>
+    <!-- Header Area End -->
+
+    <div class="shop_sidebar_area">
+
+        <!-- ##### Single Widget ##### -->
+        <div class="widget catagory mb-50">
+            <!-- Widget Title -->
+            <h6 class="widget-title mb-30">Catagories</h6>
+
+            <!--  Catagories  -->
+            <div class="catagories-menu">
                 <ul>
-                    <li><a th:href="@{home}">Home</a></li>
-                    <li class="active"><a th:href="@{shop}">Shop</a></li>
-                    <li><a th:href="@{cart}">Cart</a></li>
-                    <li><a th:href="@{checkout}">Checkout</a></li>
+                    <li class="active"><a href="#">Flowers</a></li>
+
+                    <div th:if="${activeElement} == 'Bonsai'">
+                        <li class="active">
+                            <a th:href="@{shop/filter/bonsai}">Bonsai</a>
+                        </li>
+                    </div>
+                    <div th:unless="${activeElement} == 'Bonsai'">
+                        <li>
+                            <a th:href="@{shop/filter/bonsai}">Bonsai</a>
+                        </li>
+                    </div>
+
+                    <div th:if="${activeElement} == 'Bouquet'">
+                        <li class="active">
+                            <a th:href="@{shop/filter/bouqet}">Bouquet</a>
+                        </li>
+                    </div>
+                    <div th:unless="${activeElement} == 'Bouquet'">
+                        <li><a th:href="@{shop/filter/bouqet}">Bouquet</a></li>
+                    </div>
+
+                    <div th:if="${activeElement} == 'Gift Box'">
+                        <li class="active">
+                            <a th:href="@{shop/filter/giftbox}">Gift Box</a>
+                        </li>
+                    </div>
+                    <div th:unless="${activeElement} == 'Gift Box'">
+                        <li>
+                        <li><a th:href="@{shop/filter/giftbox}">Gift Box</a></li>
+                        </li>
+                    </div>
+
+                    <div th:if="${activeElement} == 'Home Deco'">
+                        <li class="active">
+                            <a th:href="@{shop/filter/homedeco}">Home Deco</a>
+                        </li>
+                    </div>
+                    <div th:unless="${activeElement} == 'Home Deco'">
+                        <li>
+                            <a th:href="@{shop/filter/homedeco}">Home Deco</a>
+                        </li>
+                    </div>
+
+                    <div th:if="${activeElement} == 'Plants With Pot'">
+                        <li class="active">
+                            <a th:href="@{shop/filter/plantswithpot}">Plants With Pot</a>
+                        </li>
+                    </div>
+                    <div th:unless="${activeElement} == 'Plants With Pot'">
+                        <li><a th:href="@{shop/filter/plantswithpot}">Plants With Pot</a></li>
+                    </div>
+
+
                 </ul>
-            </nav>
-            <!-- Button Group -->
-            <!--<div class="amado-btn-group mt-30 mb-100"> -->
-            <!-- Button Group     <a href="#" class="btn amado-btn mb-15">%Discount%</a> -->
-            <!--</div>-->
-            <!-- Cart Menu -->
-            <div class="cart-fav-search mb-100">
-                <a th:href="@{login}" class="cart-nav"><img src="img/core-img/login_logo.png" alt=""> Login</a>
-                <a th:href="@{signup}" class="cart-nav"><img src="img/core-img/signup_logo.png" alt=""> Signup</a>
-                <a th:href="@{signup_seller}" class="cart-nav"><img src="img/core-img/application.png" alt=""> Application Form</a>
-                <a th:href="@{settings}" class="cart-nav"><img src="img/core-img/settings.png" alt=""> Settings</a>
-                <a href="#" class="fav-nav"><img src="img/core-img/favorites.png" alt=""> Favourite</a>
-                <a href="#" class="search-nav"><img src="img/core-img/search.png" alt=""> Search</a>
-            </div>
-            <!-- Social Button -->
-            <div class="social-info d-flex justify-content-between">
-                <a href="https://tr.pinterest.com/search/pins/?rs=ac&len=2&q=flowers&eq=flower&etslf=4324&term_meta[]=flowers%7Cautocomplete%7C0"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                <a href="https://www.instagram.com/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                <a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a href="https://www.twitter.com/"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            </div>
-        </header>
-        <!-- Header Area End -->
-
-        <div class="shop_sidebar_area">
-
-            <!-- ##### Single Widget ##### -->
-            <div class="widget catagory mb-50">
-                <!-- Widget Title -->
-                <h6 class="widget-title mb-30">Catagories</h6>
-
-                <!--  Catagories  -->
-                <div class="catagories-menu">
-                    <ul>
-                        <li class="active"><a href="#">Flowers</a></li>
-                        <li><a href="#">Gift Boxes</a></li>
-                        <li><a href="#">Plants with pot</a></li>
-                        <li><a href="#">Home Deco</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- ##### Single Widget ##### -->
-            <div class="widget brands mb-50">
-                Widget Title
-                <h6 class="widget-title mb-30">Brands</h6>
-
-                <div class="widget-desc">
-
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="amado">
-                        <label class="form-check-label" for="amado">Roses</label>
-                    </div>
-
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="ikea">
-                        <label class="form-check-label" for="ikea">Trees</label>
-                    </div>
-
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="furniture">
-                        <label class="form-check-label" for="furniture">Daisy</label>
-                    </div>
-
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="factory">
-                        <label class="form-check-label" for="factory">Violet</label>
-                    </div>
-
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="artdeco">
-                        <label class="form-check-label" for="artdeco">Snowdrop</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ##### Single Widget #####-->
-            <div class="widget color mb-50">
-                <!-- Widget Title -->
-                <h6 class="widget-title mb-30">Color</h6>
-
-                <div class="widget-desc">
-                    <ul class="d-flex">
-                        <li><a href="#" class="color1"></a></li>
-                        <li><a href="#" class="color2"></a></li>
-                        <li><a href="#" class="color3"></a></li>
-                        <li><a href="#" class="color4"></a></li>
-                        <li><a href="#" class="color5"></a></li>
-                        <li><a href="#" class="color6"></a></li>
-                        <li><a href="#" class="color7"></a></li>
-                        <li><a href="#" class="color8"></a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- ##### Single Widget ##### -->
-            <div class="widget price mb-50">
-                <!-- Widget Title -->
-                <h6 class="widget-title mb-30">Price</h6>
-
-                <div class="widget-desc">
-                    <div class="slider-range">
-                        <div data-min="10" data-max="1000" data-unit="$" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="10" data-value-max="1000" data-label-result="">
-                            <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
-                            <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                            <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                        </div>
-                        <div class="range-price">$10 - $1000</div>
-                    </div>
-                </div>
             </div>
         </div>
 
-        <div class="amado_product_area section-padding-100">
-            <div class="container-fluid">
+        <!-- ##### Single Widget ##### -->
+        <div class="widget brands mb-50">
+            Widget Title
+            <h6 class="widget-title mb-30">Brands</h6>
 
-                <div class="row">
-                    <div class="col-12">
-                        <div class="product-topbar d-xl-flex align-items-end justify-content-between">
-                            <!-- Total Products -->
-                            <div class="total-products">
-                                <p>Showing 1-8 0f 25</p>
-                                <div class="view d-flex">
-                                    <a href="#"><i class="fa fa-th-large" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                            <!-- Sorting -->
-                            <div class="product-sorting d-flex">
-                                <div class="sort-by-date d-flex align-items-center mr-15">
-                                    <p>Sort by</p>
-                                    <form action="#" method="get">
-                                        <select name="select" id="sortBydate">
-                                            <option value="value">Date</option>
-                                            <option value="value">Newest</option>
-                                            <option value="value">Popular</option>
-                                        </select>
-                                    </form>
-                                </div>
-                                <div class="view-product d-flex align-items-center">
-                                    <p>View</p>
-                                    <form action="#" method="get">
-                                        <select name="select" id="viewProduct">
-                                            <option value="value">12</option>
-                                            <option value="value">24</option>
-                                            <option value="value">48</option>
-                                            <option value="value">96</option>
-                                        </select>
-                                    </form>
-                                </div>
-                            </div>
+            <div class="widget-desc">
+
+                <div class="form-check" th:if="${activeElement} == 'Orkid'">
+                    <input class="form-check-input" type="checkbox" value="" id="amadoChecked"
+                           onclick='window.location.assign("/shop/filter/orkid")' checked>
+                    <label class="form-check-label" for="amado">Orkid</label>
+                </div>
+                <div class="form-check" th:unless="${activeElement} == 'Orkid'">
+                    <input class="form-check-input" type="checkbox" value="" id="amado"
+                           onclick='window.location.assign("/shop/filter/orkid")'>
+                    <label class="form-check-label" for="amado">Orkid</label>
+                </div>
+
+
+                <div class="form-check" th:if="${activeElement} == 'Acer'">
+                    <input class="form-check-input" type="checkbox" value="" id="amado2Checked"
+                           onclick='window.location.assign("/shop/filter/acer")' checked>
+                    <label class="form-check-label" for="amado">Orkid</label>
+                </div>
+                <div class="form-check" th:unless="${activeElement} == 'Acer'">
+                    <input class="form-check-input" type="checkbox" value="" id="amado2"
+                           onclick='window.location.assign("/shop/filter/acer")'>
+                    <label class="form-check-label" for="amado">Acer</label>
+                </div>
+
+                <div class="form-check" th:if="${activeElement} == 'Krizantem'">
+                    <input class="form-check-input" type="checkbox" value="" id="amado3Checked"
+                           onclick='window.location.assign("/shop/filter/krizantem")' checked>
+                    <label class="form-check-label" for="amado">Krizantem</label>
+                </div>
+                <div class="form-check" th:unless="${activeElement} == 'Krizantem'">
+                    <input class="form-check-input" type="checkbox" value="" id="amado3"
+                           onclick='window.location.assign("/shop/filter/krizantem")'>
+                    <label class="form-check-label" for="amado">Krizantem</label>
+                </div>
+
+                <div class="form-check" th:if="${activeElement} == 'Daisy'">
+                    <input class="form-check-input" type="checkbox" value="" id="amado4Checked"
+                           onclick='window.location.assign("/shop/filter/daisy")' checked>
+                    <label class="form-check-label" for="amado">Daisy</label>
+                </div>
+                <div class="form-check" th:unless="${activeElement} == 'Daisy'">
+                    <input class="form-check-input" type="checkbox" value="" id="amado4"
+                           onclick='window.location.assign("/shop/filter/daisy")'>
+                    <label class="form-check-label" for="amado">Daisy</label>
+                </div>
+
+
+
+                <div class="form-check" th:if="${activeElement} == 'Guzmania'">
+                    <input class="form-check-input" type="checkbox" value="" id="amado5Checked"
+                           onclick='window.location.assign("/shop/filter/guzmania")' checked>
+                    <label class="form-check-label" for="amado">Guzmania</label>
+                </div>
+                <div class="form-check" th:unless="${activeElement} == 'guzmania'">
+                    <input class="form-check-input" type="checkbox" value="" id="amado5"
+                           onclick='window.location.assign("/shop/filter/guzmania")'>
+                    <label class="form-check-label" for="amado">Guzmania</label>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- ##### Single Widget #####-->
+        <div class="widget color mb-50">
+            <!-- Widget Title -->
+            <h6 class="widget-title mb-30">Color</h6>
+
+            <div class="widget-desc">
+                <ul class="d-flex">
+                    <li><a th:href="@{shop/filter/white}" class="color1"></a></li>
+                    <li><a th:href="@{shop/filter/gray}" class="color2"></a></li>
+                    <li><a th:href="@{shop/filter/black}" class="color3"></a></li>
+                    <li><a th:href="@{shop/filter/blue}" class="color4"></a></li>
+                    <li><a th:href="@{shop/filter/red}" class="color5"></a></li>
+                    <li><a th:href="@{shop/filter/yellow}" class="color6"></a></li>
+                    <li><a th:href="@{shop/filter/orange}" class="color7"></a></li>
+                    <li><a th:href="@{shop/filter/brown}" class="color8"></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ##### Single Widget ##### -->
+        <div class="widget price mb-50">
+            <!-- Widget Title -->
+            <h6 class="widget-title mb-30">Price</h6>
+
+            <div class="widget-desc">
+                <div class="slider-range">
+                    <div data-min="10" data-max="1000" data-unit="$"
+                         class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
+                         data-value-min="10" data-value-max="1000" data-label-result="">
+                        <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
+                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                    </div>
+                    <div class="range-price">$10 - $1000</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="amado_product_area section-padding-100">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="product-topbar d-xl-flex align-items-end justify-content-between">
+                        <!-- Total Products -->
+                        <div class="total-products">
+                            <p>Showing 1-10 0f 10</p>
+<!--                                                        <div class="view d-flex">-->
+<!--                                                            <a href="#"><i class="fa fa-th-large" aria-hidden="true"></i></a>-->
+<!--                                                            <a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>-->
+<!--                                                        </div>-->
+                        </div>
+                        <!-- Sorting -->
+                        <div class="product-sorting d-flex">
+                                                        <div class="sort-by-date d-flex align-items-center mr-15">
+                            <!--                                <p>Sort by</p>-->
+                                                            <form action="#" method="get">
+                            <!--                                    <select name="select" id="sortBydate">-->
+                            <!--                                        <option value="value">Date</option>-->
+                            <!--                                        <option value="value">Newest</option>-->
+                            <!--                                        <option value="value">Popular</option>-->
+                            <!--                                    </select>-->
+                                                            </form>
+                                                        </div>
+                                                        <div class="view-product d-flex align-items-center">
+                            <!--                                <p>View</p>-->
+                                                            <form action="#" method="get">
+                            <!--                                    <select name="select" id="viewProduct">-->
+                            <!--                                        <option value="value">12</option>-->
+                            <!--                                        <option value="value">24</option>-->
+                            <!--                                        <option value="value">48</option>-->
+                            <!--                                        <option value="value">96</option>-->
+                            <!--                                    </select>-->
+                                                            </form>
+                                                        </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="row">
+            <div class="row">
 
 
-                    <div class="list-group" th:each="flower : ${flowers}">
-                    <!--                    &lt;!&ndash; Single Product Area &ndash;&gt;-->
-                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">
+                <!--                    &lt;!&ndash; Single Product Area &ndash;&gt;-->
+<!--                <div class="list-group" th:each="flower : ${flowers}">-->
+
+                    <div class="col-12 col-sm-6 col-md-12 col-xl-6" th:each="flower : ${flowers}">
+
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
                             <a th:href="@{/product_details/{id}(id=${flower.id})}">
-                            <div class="product-img">
-                                <img th:src="${flower.imagelink}" alt="">
-                                <!-- Hover Thumb -->
-                                <img class="hover-img" th:src="${flower.hoverImageLink}" alt="">
-                            </div>
+                                <div class="product-img">
+                                    <img th:src="${flower.imagelink}" alt="">
+                                    <!-- Hover Thumb -->
+                                    <img class="hover-img" th:src="${flower.hoverImageLink}" alt="">
+                                </div>
                             </a>
 
                             <!-- Product Description -->
@@ -271,364 +367,329 @@
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                     </div>
-                                    <div class="cart">
-                                        <a th:href="@{cart}" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>
-                                    </div>
-                                </div>
+                                    <!--                                    <div class="cart">-->
+                                    <!--                                        <a th:href="@{cart}" data-toggle="tooltip" data-placement="left"-->
+                                    <!--                                           title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>-->
+                                    <!--                                    </div>-->
+<!--                                </div>-->
                             </div>
                         </div>
                     </div>
 
-                    </div>
-
-<!--                    &lt;!&ndash; Single Product Area &ndash;&gt;-->
-<!--                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">-->
-<!--                        <div class="single-product-wrapper">-->
-<!--                            &lt;!&ndash; Product Image &ndash;&gt;-->
-<!--                            <div class="product-img">-->
-<!--                                <img src="img/bg-img/bonsai2.jpg" alt="">-->
-<!--                                &lt;!&ndash; Hover Thumb &ndash;&gt;-->
-<!--                                <img class="hover-img" src="img/product-img/product3.jpg" alt="">-->
-<!--                            </div>-->
-
-<!--                            &lt;!&ndash; Product Description &ndash;&gt;-->
-<!--                            <div class="product-description d-flex align-items-center justify-content-between">-->
-<!--                                &lt;!&ndash; Product Meta Data &ndash;&gt;-->
-<!--                                <div class="product-meta-data">-->
-<!--                                    <div class="line"></div>-->
-<!--                                    <p class="product-price">$180</p>-->
-<!--                                    <a th:href="@{product_details}">-->
-<!--                                        <h6>Bonsai Tree</h6>-->
-<!--                                    </a>-->
-<!--                                </div>-->
-<!--                                &lt;!&ndash; Ratings & Cart &ndash;&gt;-->
-<!--                                <div class="ratings-cart text-right">-->
-<!--                                    <div class="ratings">-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                    </div>-->
-<!--                                    <div class="cart">-->
-<!--                                        <a th:href="@{cart}" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-<!--                    &lt;!&ndash; Single Product Area &ndash;&gt;-->
-<!--                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">-->
-<!--                        <div class="single-product-wrapper">-->
-<!--                            &lt;!&ndash; Product Image &ndash;&gt;-->
-<!--                            <div class="product-img">-->
-<!--                                <img src="img/bg-img/2.jpg" alt="">-->
-<!--                                &lt;!&ndash; Hover Thumb &ndash;&gt;-->
-<!--                                <img class="hover-img" src="img/product-img/product4.jpg" alt="">-->
-<!--                            </div>-->
-
-<!--                            &lt;!&ndash; Product Description &ndash;&gt;-->
-<!--                            <div class="product-description d-flex align-items-center justify-content-between">-->
-<!--                                &lt;!&ndash; Product Meta Data &ndash;&gt;-->
-<!--                                <div class="product-meta-data">-->
-<!--                                    <div class="line"></div>-->
-<!--                                    <p class="product-price">$100</p>-->
-<!--                                    <a th:href="@{product_details}">-->
-<!--                                        <h6>Aloe Vera w/ Square Pot</h6>-->
-<!--                                    </a>-->
-<!--                                </div>-->
-<!--                                &lt;!&ndash; Ratings & Cart &ndash;&gt;-->
-<!--                                <div class="ratings-cart text-right">-->
-<!--                                    <div class="ratings">-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="false"></i>-->
-<!--                                    </div>-->
-<!--                                    <div class="cart">-->
-<!--                                        <a th:href="@{cart}" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-<!--                    &lt;!&ndash; Single Product Area &ndash;&gt;-->
-<!--                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">-->
-<!--                        <div class="single-product-wrapper">-->
-<!--                            &lt;!&ndash; Product Image &ndash;&gt;-->
-<!--                            <div class="product-img">-->
-<!--                                <img src="img/bg-img/box_flower.jpeg" alt="">-->
-<!--                                &lt;!&ndash; Hover Thumb &ndash;&gt;-->
-<!--                                <img class="hover-img" src="img/product-img/product5.jpg" alt="">-->
-<!--                            </div>-->
-
-<!--                            &lt;!&ndash; Product Description &ndash;&gt;-->
-<!--                            <div class="product-description d-flex align-items-center justify-content-between">-->
-<!--                                &lt;!&ndash; Product Meta Data &ndash;&gt;-->
-<!--                                <div class="product-meta-data">-->
-<!--                                    <div class="line"></div>-->
-<!--                                    <p class="product-price">$150</p>-->
-<!--                                    <a th:href="@{product_details}">-->
-<!--                                        <h6>Box Flower</h6>-->
-<!--                                    </a>-->
-<!--                                </div>-->
-<!--                                &lt;!&ndash; Ratings & Cart &ndash;&gt;-->
-<!--                                <div class="ratings-cart text-right">-->
-<!--                                    <div class="ratings">-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="false"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="false"></i>-->
-<!--                                    </div>-->
-<!--                                    <div class="cart">-->
-<!--                                        <a th:href="@{cart}" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-<!--                    &lt;!&ndash; Single Product Area &ndash;&gt;-->
-<!--                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">-->
-<!--                        <div class="single-product-wrapper">-->
-<!--                            &lt;!&ndash; Product Image &ndash;&gt;-->
-<!--                            <div class="product-img">-->
-<!--                                <img src="img/bg-img/4.jpg" alt="">-->
-<!--                                &lt;!&ndash; Hover Thumb &ndash;&gt;-->
-<!--                                <img class="hover-img" src="img/product-img/product6.jpg" alt="">-->
-<!--                            </div>-->
-
-<!--                            &lt;!&ndash; Product Description &ndash;&gt;-->
-<!--                            <div class="product-description d-flex align-items-center justify-content-between">-->
-<!--                                &lt;!&ndash; Product Meta Data &ndash;&gt;-->
-<!--                                <div class="product-meta-data">-->
-<!--                                    <div class="line"></div>-->
-<!--                                    <p class="product-price">$80</p>-->
-<!--                                    <a th:href="@{product_details}">-->
-<!--                                        <h6>Cactus</h6>-->
-<!--                                    </a>-->
-<!--                                </div>-->
-<!--                                &lt;!&ndash; Ratings & Cart &ndash;&gt;-->
-<!--                                <div class="ratings-cart text-right">-->
-<!--                                    <div class="ratings">-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="false"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="false"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="false"></i>-->
-<!--                                    </div>-->
-<!--                                    <div class="cart">-->
-<!--                                        <a th:href="@{cart}" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-<!--                    &lt;!&ndash; Single Product Area &ndash;&gt;-->
-<!--                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">-->
-<!--                        <div class="single-product-wrapper">-->
-<!--                            &lt;!&ndash; Product Image &ndash;&gt;-->
-<!--                            <div class="product-img">-->
-<!--                                <img src="img/bg-img/5.jpg" alt="">-->
-<!--                                &lt;!&ndash; Hover Thumb &ndash;&gt;-->
-<!--                                <img class="hover-img" src="img/product-img/product1.jpg" alt="">-->
-<!--                            </div>-->
-
-<!--                            &lt;!&ndash; Product Description &ndash;&gt;-->
-<!--                            <div class="product-description d-flex align-items-center justify-content-between">-->
-<!--                                &lt;!&ndash; Product Meta Data &ndash;&gt;-->
-<!--                                <div class="product-meta-data">-->
-<!--                                    <div class="line"></div>-->
-<!--                                    <p class="product-price">$18</p>-->
-<!--                                    <a th:href="@{product_details}">-->
-<!--                                        <h6>Plant Pot</h6>-->
-<!--                                    </a>-->
-<!--                                </div>-->
-<!--                                &lt;!&ndash; Ratings & Cart &ndash;&gt;-->
-<!--                                <div class="ratings-cart text-right">-->
-<!--                                    <div class="ratings">-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="false"></i>-->
-<!--                                    </div>-->
-<!--                                    <div class="cart">-->
-<!--                                        <a th:href="@{cart}" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                -->
-<!--                &lt;!&ndash; Single Product Area &ndash;&gt;-->
-<!--                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">-->
-<!--                        <div class="single-product-wrapper">-->
-<!--                            &lt;!&ndash; Product Image &ndash;&gt;-->
-<!--                            <div class="product-img">-->
-<!--                                <img src="img/bg-img/buket_çiçek.jpeg" alt="">-->
-<!--                                &lt;!&ndash; Hover Thumb &ndash;&gt;-->
-<!--                                <img class="hover-img" src="img/product-img/product6.jpg" alt="">-->
-<!--                            </div>-->
-
-<!--                            &lt;!&ndash; Product Description &ndash;&gt;-->
-<!--                            <div class="product-description d-flex align-items-center justify-content-between">-->
-<!--                                &lt;!&ndash; Product Meta Data &ndash;&gt;-->
-<!--                                <div class="product-meta-data">-->
-<!--                                    <div class="line"></div>-->
-<!--                                    <p class="product-price">$110</p>-->
-<!--                                    <a th:href="@{product_details}">-->
-<!--                                        <h6>Bouquet of Flowers</h6>-->
-<!--                                    </a>-->
-<!--                                </div>-->
-<!--                                &lt;!&ndash; Ratings & Cart &ndash;&gt;-->
-<!--                                <div class="ratings-cart text-right">-->
-<!--                                    <div class="ratings">-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                    </div>-->
-<!--                                    <div class="cart">-->
-<!--                                        <a th:href="@{cart}" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                -->
-<!--                 &lt;!&ndash; Single Product Area &ndash;&gt;-->
-<!--                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">-->
-<!--                        <div class="single-product-wrapper">-->
-<!--                            &lt;!&ndash; Product Image &ndash;&gt;-->
-<!--                            <div class="product-img">-->
-<!--                                <img src="img/bg-img/large_gift_box.jpeg" alt="">-->
-<!--                                &lt;!&ndash; Hover Thumb &ndash;&gt;-->
-<!--                                <img class="hover-img" src="img/product-img/product6.jpg" alt="">-->
-<!--                            </div>-->
-
-<!--                            &lt;!&ndash; Product Description &ndash;&gt;-->
-<!--                            <div class="product-description d-flex align-items-center justify-content-between">-->
-<!--                                &lt;!&ndash; Product Meta Data &ndash;&gt;-->
-<!--                                <div class="product-meta-data">-->
-<!--                                    <div class="line"></div>-->
-<!--                                    <p class="product-price">$500</p>-->
-<!--                                    <a th:href="@{product_details}">-->
-<!--                                        <h6>Large Gift Box</h6>-->
-<!--                                    </a>-->
-<!--                                </div>-->
-<!--                                &lt;!&ndash; Ratings & Cart &ndash;&gt;-->
-<!--                                <div class="ratings-cart text-right">-->
-<!--                                    <div class="ratings">-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                    </div>-->
-<!--                                    <div class="cart">-->
-<!--                                        <a th:href="@{cart}" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                -->
-<!--                &lt;!&ndash; Single Product Area &ndash;&gt;-->
-<!--                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">-->
-<!--                        <div class="single-product-wrapper">-->
-<!--                            &lt;!&ndash; Product Image &ndash;&gt;-->
-<!--                            <div class="product-img">-->
-<!--                                <img src="img/bg-img/small_gift_box.jpeg" alt="">-->
-<!--                                &lt;!&ndash; Hover Thumb &ndash;&gt;-->
-<!--                                <img class="hover-img" src="img/product-img/product6.jpg" alt="">-->
-<!--                            </div>-->
-
-<!--                            &lt;!&ndash; Product Description &ndash;&gt;-->
-<!--                            <div class="product-description d-flex align-items-center justify-content-between">-->
-<!--                                &lt;!&ndash; Product Meta Data &ndash;&gt;-->
-<!--                                <div class="product-meta-data">-->
-<!--                                    <div class="line"></div>-->
-<!--                                    <p class="product-price">$300</p>-->
-<!--                                    <a th:href="@{product_details}">-->
-<!--                                        <h6>Small Gift Box</h6>-->
-<!--                                    </a>-->
-<!--                                </div>-->
-<!--                                &lt;!&ndash; Ratings & Cart &ndash;&gt;-->
-<!--                                <div class="ratings-cart text-right">-->
-<!--                                    <div class="ratings">-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                    </div>-->
-<!--                                    <div class="cart">-->
-<!--                                        <a th:href="@{cart}" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                -->
-<!--                &lt;!&ndash; Single Product Area &ndash;&gt;-->
-<!--                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">-->
-<!--                        <div class="single-product-wrapper">-->
-<!--                            &lt;!&ndash; Product Image &ndash;&gt;-->
-<!--                            <div class="product-img">-->
-<!--                                <img src="img/bg-img/9.jpg" alt="">-->
-<!--                                &lt;!&ndash; Hover Thumb &ndash;&gt;-->
-<!--                                <img class="hover-img" src="img/product-img/product6.jpg" alt="">-->
-<!--                            </div>-->
-
-<!--                            &lt;!&ndash; Product Description &ndash;&gt;-->
-<!--                            <div class="product-description d-flex align-items-center justify-content-between">-->
-<!--                                &lt;!&ndash; Product Meta Data &ndash;&gt;-->
-<!--                                <div class="product-meta-data">-->
-<!--                                    <div class="line"></div>-->
-<!--                                    <p class="product-price">$50</p>-->
-<!--                                    <a th:href="@{product_details}">-->
-<!--                                        <h6>Home Deco</h6>-->
-<!--                                    </a>-->
-<!--                                </div>-->
-<!--                                &lt;!&ndash; Ratings & Cart &ndash;&gt;-->
-<!--                                <div class="ratings-cart text-right">-->
-<!--                                    <div class="ratings">-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="false"></i>-->
-<!--                                        <i class="fa fa-star" aria-hidden="false"></i>-->
-<!--                                    </div>-->
-<!--                                    <div class="cart">-->
-<!--                                        <a th:href="@{cart}" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-
-                <div class="row">
-                    <div class="col-12">
-                        <!-- Pagination -->
-                        <nav aria-label="navigation">
-                            <ul class="pagination justify-content-end mt-50">
-                                <li class="page-item active"><a class="page-link" href="#">01.</a></li>
-                                <li class="page-item"><a class="page-link" href="#">02.</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03.</a></li>
-                                <li class="page-item"><a class="page-link" href="#">04.</a></li>
-                            </ul>
-                        </nav>
-                    </div>
                 </div>
+
+
+                <!--                    &lt;!&ndash; Single Product Area &ndash;&gt;-->
+                <!--                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">-->
+                <!--                        <div class="single-product-wrapper">-->
+                <!--                            &lt;!&ndash; Product Image &ndash;&gt;-->
+                <!--                            <div class="product-img">-->
+                <!--                                <img src="img/bg-img/2.jpg" alt="">-->
+                <!--                                &lt;!&ndash; Hover Thumb &ndash;&gt;-->
+                <!--                                <img class="hover-img" src="img/product-img/product4.jpg" alt="">-->
+                <!--                            </div>-->
+
+                <!--                            &lt;!&ndash; Product Description &ndash;&gt;-->
+                <!--                            <div class="product-description d-flex align-items-center justify-content-between">-->
+                <!--                                &lt;!&ndash; Product Meta Data &ndash;&gt;-->
+                <!--                                <div class="product-meta-data">-->
+                <!--                                    <div class="line"></div>-->
+                <!--                                    <p class="product-price">$100</p>-->
+                <!--                                    <a th:href="@{product_details}">-->
+                <!--                                        <h6>Aloe Vera w/ Square Pot</h6>-->
+                <!--                                    </a>-->
+                <!--                                </div>-->
+                <!--                                &lt;!&ndash; Ratings & Cart &ndash;&gt;-->
+                <!--                                <div class="ratings-cart text-right">-->
+                <!--                                    <div class="ratings">-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="false"></i>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="cart">-->
+                <!--                                        <a th:href="@{cart}" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+
+                <!--                    &lt;!&ndash; Single Product Area &ndash;&gt;-->
+                <!--                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">-->
+                <!--                        <div class="single-product-wrapper">-->
+                <!--                            &lt;!&ndash; Product Image &ndash;&gt;-->
+                <!--                            <div class="product-img">-->
+                <!--                                <img src="img/bg-img/box_flower.jpeg" alt="">-->
+                <!--                                &lt;!&ndash; Hover Thumb &ndash;&gt;-->
+                <!--                                <img class="hover-img" src="img/product-img/product5.jpg" alt="">-->
+                <!--                            </div>-->
+
+                <!--                            &lt;!&ndash; Product Description &ndash;&gt;-->
+                <!--                            <div class="product-description d-flex align-items-center justify-content-between">-->
+                <!--                                &lt;!&ndash; Product Meta Data &ndash;&gt;-->
+                <!--                                <div class="product-meta-data">-->
+                <!--                                    <div class="line"></div>-->
+                <!--                                    <p class="product-price">$150</p>-->
+                <!--                                    <a th:href="@{product_details}">-->
+                <!--                                        <h6>Box Flower</h6>-->
+                <!--                                    </a>-->
+                <!--                                </div>-->
+                <!--                                &lt;!&ndash; Ratings & Cart &ndash;&gt;-->
+                <!--                                <div class="ratings-cart text-right">-->
+                <!--                                    <div class="ratings">-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="false"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="false"></i>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="cart">-->
+                <!--                                        <a th:href="@{cart}" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+
+                <!--                    &lt;!&ndash; Single Product Area &ndash;&gt;-->
+                <!--                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">-->
+                <!--                        <div class="single-product-wrapper">-->
+                <!--                            &lt;!&ndash; Product Image &ndash;&gt;-->
+                <!--                            <div class="product-img">-->
+                <!--                                <img src="img/bg-img/4.jpg" alt="">-->
+                <!--                                &lt;!&ndash; Hover Thumb &ndash;&gt;-->
+                <!--                                <img class="hover-img" src="img/product-img/product6.jpg" alt="">-->
+                <!--                            </div>-->
+
+                <!--                            &lt;!&ndash; Product Description &ndash;&gt;-->
+                <!--                            <div class="product-description d-flex align-items-center justify-content-between">-->
+                <!--                                &lt;!&ndash; Product Meta Data &ndash;&gt;-->
+                <!--                                <div class="product-meta-data">-->
+                <!--                                    <div class="line"></div>-->
+                <!--                                    <p class="product-price">$80</p>-->
+                <!--                                    <a th:href="@{product_details}">-->
+                <!--                                        <h6>Cactus</h6>-->
+                <!--                                    </a>-->
+                <!--                                </div>-->
+                <!--                                &lt;!&ndash; Ratings & Cart &ndash;&gt;-->
+                <!--                                <div class="ratings-cart text-right">-->
+                <!--                                    <div class="ratings">-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="false"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="false"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="false"></i>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="cart">-->
+                <!--                                        <a th:href="@{cart}" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+
+                <!--                    &lt;!&ndash; Single Product Area &ndash;&gt;-->
+                <!--                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">-->
+                <!--                        <div class="single-product-wrapper">-->
+                <!--                            &lt;!&ndash; Product Image &ndash;&gt;-->
+                <!--                            <div class="product-img">-->
+                <!--                                <img src="img/bg-img/5.jpg" alt="">-->
+                <!--                                &lt;!&ndash; Hover Thumb &ndash;&gt;-->
+                <!--                                <img class="hover-img" src="img/product-img/product1.jpg" alt="">-->
+                <!--                            </div>-->
+
+                <!--                            &lt;!&ndash; Product Description &ndash;&gt;-->
+                <!--                            <div class="product-description d-flex align-items-center justify-content-between">-->
+                <!--                                &lt;!&ndash; Product Meta Data &ndash;&gt;-->
+                <!--                                <div class="product-meta-data">-->
+                <!--                                    <div class="line"></div>-->
+                <!--                                    <p class="product-price">$18</p>-->
+                <!--                                    <a th:href="@{product_details}">-->
+                <!--                                        <h6>Plant Pot</h6>-->
+                <!--                                    </a>-->
+                <!--                                </div>-->
+                <!--                                &lt;!&ndash; Ratings & Cart &ndash;&gt;-->
+                <!--                                <div class="ratings-cart text-right">-->
+                <!--                                    <div class="ratings">-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="false"></i>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="cart">-->
+                <!--                                        <a th:href="@{cart}" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--                -->
+                <!--                &lt;!&ndash; Single Product Area &ndash;&gt;-->
+                <!--                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">-->
+                <!--                        <div class="single-product-wrapper">-->
+                <!--                            &lt;!&ndash; Product Image &ndash;&gt;-->
+                <!--                            <div class="product-img">-->
+                <!--                                <img src="img/bg-img/buket_çiçek.jpeg" alt="">-->
+                <!--                                &lt;!&ndash; Hover Thumb &ndash;&gt;-->
+                <!--                                <img class="hover-img" src="img/product-img/product6.jpg" alt="">-->
+                <!--                            </div>-->
+
+                <!--                            &lt;!&ndash; Product Description &ndash;&gt;-->
+                <!--                            <div class="product-description d-flex align-items-center justify-content-between">-->
+                <!--                                &lt;!&ndash; Product Meta Data &ndash;&gt;-->
+                <!--                                <div class="product-meta-data">-->
+                <!--                                    <div class="line"></div>-->
+                <!--                                    <p class="product-price">$110</p>-->
+                <!--                                    <a th:href="@{product_details}">-->
+                <!--                                        <h6>Bouquet of Flowers</h6>-->
+                <!--                                    </a>-->
+                <!--                                </div>-->
+                <!--                                &lt;!&ndash; Ratings & Cart &ndash;&gt;-->
+                <!--                                <div class="ratings-cart text-right">-->
+                <!--                                    <div class="ratings">-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="cart">-->
+                <!--                                        <a th:href="@{cart}" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                -->
+                <!--                 &lt;!&ndash; Single Product Area &ndash;&gt;-->
+                <!--                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">-->
+                <!--                        <div class="single-product-wrapper">-->
+                <!--                            &lt;!&ndash; Product Image &ndash;&gt;-->
+                <!--                            <div class="product-img">-->
+                <!--                                <img src="img/bg-img/large_gift_box.jpeg" alt="">-->
+                <!--                                &lt;!&ndash; Hover Thumb &ndash;&gt;-->
+                <!--                                <img class="hover-img" src="img/product-img/product6.jpg" alt="">-->
+                <!--                            </div>-->
+
+                <!--                            &lt;!&ndash; Product Description &ndash;&gt;-->
+                <!--                            <div class="product-description d-flex align-items-center justify-content-between">-->
+                <!--                                &lt;!&ndash; Product Meta Data &ndash;&gt;-->
+                <!--                                <div class="product-meta-data">-->
+                <!--                                    <div class="line"></div>-->
+                <!--                                    <p class="product-price">$500</p>-->
+                <!--                                    <a th:href="@{product_details}">-->
+                <!--                                        <h6>Large Gift Box</h6>-->
+                <!--                                    </a>-->
+                <!--                                </div>-->
+                <!--                                &lt;!&ndash; Ratings & Cart &ndash;&gt;-->
+                <!--                                <div class="ratings-cart text-right">-->
+                <!--                                    <div class="ratings">-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="cart">-->
+                <!--                                        <a th:href="@{cart}" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                -->
+                <!--                &lt;!&ndash; Single Product Area &ndash;&gt;-->
+                <!--                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">-->
+                <!--                        <div class="single-product-wrapper">-->
+                <!--                            &lt;!&ndash; Product Image &ndash;&gt;-->
+                <!--                            <div class="product-img">-->
+                <!--                                <img src="img/bg-img/small_gift_box.jpeg" alt="">-->
+                <!--                                &lt;!&ndash; Hover Thumb &ndash;&gt;-->
+                <!--                                <img class="hover-img" src="img/product-img/product6.jpg" alt="">-->
+                <!--                            </div>-->
+
+                <!--                            &lt;!&ndash; Product Description &ndash;&gt;-->
+                <!--                            <div class="product-description d-flex align-items-center justify-content-between">-->
+                <!--                                &lt;!&ndash; Product Meta Data &ndash;&gt;-->
+                <!--                                <div class="product-meta-data">-->
+                <!--                                    <div class="line"></div>-->
+                <!--                                    <p class="product-price">$300</p>-->
+                <!--                                    <a th:href="@{product_details}">-->
+                <!--                                        <h6>Small Gift Box</h6>-->
+                <!--                                    </a>-->
+                <!--                                </div>-->
+                <!--                                &lt;!&ndash; Ratings & Cart &ndash;&gt;-->
+                <!--                                <div class="ratings-cart text-right">-->
+                <!--                                    <div class="ratings">-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="cart">-->
+                <!--                                        <a th:href="@{cart}" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                -->
+                <!--                &lt;!&ndash; Single Product Area &ndash;&gt;-->
+                <!--                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">-->
+                <!--                        <div class="single-product-wrapper">-->
+                <!--                            &lt;!&ndash; Product Image &ndash;&gt;-->
+                <!--                            <div class="product-img">-->
+                <!--                                <img src="img/bg-img/9.jpg" alt="">-->
+                <!--                                &lt;!&ndash; Hover Thumb &ndash;&gt;-->
+                <!--                                <img class="hover-img" src="img/product-img/product6.jpg" alt="">-->
+                <!--                            </div>-->
+
+                <!--                            &lt;!&ndash; Product Description &ndash;&gt;-->
+                <!--                            <div class="product-description d-flex align-items-center justify-content-between">-->
+                <!--                                &lt;!&ndash; Product Meta Data &ndash;&gt;-->
+                <!--                                <div class="product-meta-data">-->
+                <!--                                    <div class="line"></div>-->
+                <!--                                    <p class="product-price">$50</p>-->
+                <!--                                    <a th:href="@{product_details}">-->
+                <!--                                        <h6>Home Deco</h6>-->
+                <!--                                    </a>-->
+                <!--                                </div>-->
+                <!--                                &lt;!&ndash; Ratings & Cart &ndash;&gt;-->
+                <!--                                <div class="ratings-cart text-right">-->
+                <!--                                    <div class="ratings">-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="true"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="false"></i>-->
+                <!--                                        <i class="fa fa-star" aria-hidden="false"></i>-->
+                <!--                                    </div>-->
+                <!--                                    <div class="cart">-->
+                <!--                                        <a th:href="@{cart}" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>-->
+                <!--                                    </div>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+
+
+                <!--                <div class="row">-->
+                <!--                    <div class="col-12">-->
+                <!--                        &lt;!&ndash; Pagination &ndash;&gt;-->
+                <!--                        <nav aria-label="navigation">-->
+                <!--                            <ul class="pagination justify-content-end mt-50">-->
+                <!--                                <li class="page-item active"><a class="page-link" href="#">01.</a></li>-->
+                <!--                                <li class="page-item"><a class="page-link" href="#">02.</a></li>-->
+                <!--                                <li class="page-item"><a class="page-link" href="#">03.</a></li>-->
+                <!--                                <li class="page-item"><a class="page-link" href="#">04.</a></li>-->
+                <!--                            </ul>-->
+                <!--                        </nav>-->
+                <!--                    </div>-->
+                <!--                </div>-->
             </div>
         </div>
     </div>
@@ -645,35 +706,40 @@
                         <div class="footer-logo mr-50">
                             <a th:href="@{home}"><img src="img\core-img\Logom2.png" alt=""></a>
 
-                    </div>
-                <!--</div>-->
+                        </div>
+                        <!--</div>-->
 
-                <div class="col-12 col-lg-8">
-                    <div class="single_widget_area">
-                        Footer Menu
-                        <div class="footer_menu">
-                            <nav class="navbar navbar-expand-lg justify-content-end">
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerNavContent" aria-controls="footerNavContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
-                                <div class="collapse navbar-collapse" id="footerNavContent">
-                                    <ul class="navbar-nav ml-auto">
-                                        <li class="nav-item active">
-                                            <a class="nav-link" th:href="@{home}">Home</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" th:href="@{shop}">Shop</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" th:href="@{product_details}">Product</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" th:href="@{cart}">Cart</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" th:href="@{checkout}">Checkout</a>
-                                        </li>
-                                    </ul>
+                        <div class="col-12 col-lg-8">
+                            <div class="single_widget_area">
+                                Footer Menu
+                                <div class="footer_menu">
+                                    <nav class="navbar navbar-expand-lg justify-content-end">
+                                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                                data-target="#footerNavContent" aria-controls="footerNavContent"
+                                                aria-expanded="false" aria-label="Toggle navigation"><i
+                                                class="fa fa-bars"></i></button>
+                                        <div class="collapse navbar-collapse" id="footerNavContent">
+                                            <ul class="navbar-nav ml-auto">
+                                                <li class="nav-item active">
+                                                    <a class="nav-link" th:href="@{home}">Home</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" th:href="@{shop}">Shop</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" th:href="@{product_details}">Product</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" th:href="@{cart}">Cart</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" th:href="@{checkout}">Checkout</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </nav>
                                 </div>
-                            </nav>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -693,6 +759,7 @@
     <!-- Active js -->
     <script src="js/active.js"></script>
 
+</div>
 </body>
 
 </html>
