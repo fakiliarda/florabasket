@@ -1,7 +1,7 @@
 package com.yaf.florabasket.model.flower;
 
 /**
- * @author ardafakili
+ *
  * @date 20.05.2020
  */
 public class FilterProperties {

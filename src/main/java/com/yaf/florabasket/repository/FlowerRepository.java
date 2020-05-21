@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * @author ardafakili
+ *
  * @date 17.05.2020
  */
 @Repository("flowerRepository")

@@ -22,7 +22,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * @author ardafakili
+ *
  * @date 11.05.2020
  */
 

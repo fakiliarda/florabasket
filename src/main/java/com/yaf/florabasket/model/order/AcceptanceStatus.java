@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @author ardafakili
+ *
  * @date 18.05.2020
  */
 public enum AcceptanceStatus {

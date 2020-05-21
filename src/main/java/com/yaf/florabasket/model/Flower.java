@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 /**
- * @author ardafakili
+ *
  * @date 17.05.2020
  */
 

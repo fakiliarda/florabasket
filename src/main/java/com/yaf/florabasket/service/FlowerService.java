@@ -6,7 +6,7 @@ import com.yaf.florabasket.model.User;
 import java.util.List;
 
 /**
- * @author ardafakili
+ *
  * @date 17.05.2020
  */
 public interface FlowerService {

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author ardafakili
+ *
  * @date 11.05.2020
  */
 

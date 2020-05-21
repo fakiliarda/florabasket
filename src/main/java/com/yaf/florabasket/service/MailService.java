@@ -7,7 +7,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 
 /**
- * @author ardafakili
+ *
  * @date 21.05.2020
  */
 @Component

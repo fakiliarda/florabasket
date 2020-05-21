@@ -7,7 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 /**
- * @author ardafakili
+ *
  * @date 11.05.2020
  */
 

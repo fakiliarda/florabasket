@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * @author ardafakili
+ *
  * @date 18.05.2020
  */
 

@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 /**
- * @author ardafakili
+ *
  * @date 15.05.2020
  */
 

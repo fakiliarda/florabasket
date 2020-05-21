@@ -3,7 +3,7 @@ package com.yaf.florabasket.security;
 import lombok.Getter;
 
 /**
- * @author ardafakili
+ *
  * @date 11.05.2020
  */
 public enum ApplicationUserPermission {
