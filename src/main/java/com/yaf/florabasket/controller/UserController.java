@@ -77,6 +77,7 @@ public class UserController {
             model.addObject("user", new User());
         }
         model.setViewName("user/signup");
+        model.addObject("userForMail", new User());
 
         return model;
     }
@@ -100,7 +101,9 @@ public class UserController {
             model.addObject("user", new User());
         }
 
+        model.addObject("userForMail", new User());
         model.setViewName("user/signup_seller");
+        model.addObject("userForMail", new User());
 
         return model;
     }
