@@ -74,7 +74,8 @@ public class UserServiceIml implements UserService {
 
     @Override
     public void saveSellerUser(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode("seller"));
+
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setEnabled(1);
         Role userRole = roleRepository.findByRole(Roles.SELLER.toString());
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
@@ -83,7 +84,8 @@ public class UserServiceIml implements UserService {
 
     @Override
     public void saveCourierUser(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode("courier"));
+
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setEnabled(1);
         Role userRole = roleRepository.findByRole(Roles.COURIER.toString());
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));

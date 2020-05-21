@@ -79,7 +79,7 @@ public class PublicController {
 
         model.addObject("activeElement", activeElement);
         model.addObject("flowers", flowerList);
-        model.setViewName("/shop");
+        model.setViewName("shop");
 
         return model;
     }

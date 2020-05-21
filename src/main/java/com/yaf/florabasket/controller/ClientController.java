@@ -43,11 +43,6 @@ public class ClientController {
         this.cartService = cartService;
     }
 
-    @RequestMapping(value = {"/order"})
-    public String index() {
-        return "/order";
-    }
-
     @RequestMapping(value = {"/order"}, method = RequestMethod.GET)
     public ModelAndView order(@ModelAttribute("id") String orderId) {
 
@@ -67,7 +62,9 @@ public class ClientController {
         model.addObject("orders", orderList);
         model.addObject("user", user);
         model.addObject("orderInfo", orderInfo);
-        model.setViewName("/order");
+        model.addObject("userForMail", new User());
+
+        model.setViewName("order");
         return model;
     }
 
@@ -100,8 +97,9 @@ public class ClientController {
         model.addObject("user", user);
         model.addObject("orders", ordersList);
         model.addObject("cart", cart);
+        model.addObject("userForMail", new User());
 
-        model.setViewName("/cart");
+        model.setViewName("cart");
         return model;
     }
 
@@ -117,8 +115,9 @@ public class ClientController {
             model.addObject("signout", "Sign out");
         }
         model.addObject("cart", cartService.getCartWithTotalPrice());
+        model.addObject("userForMail", new User());
 
-        model.setViewName("/checkout");
+        model.setViewName("checkout");
         return model;
     }
 
@@ -168,9 +167,10 @@ public class ClientController {
             modelAndView.addObject("orders", orders);
             modelAndView.addObject("sellers", sellers);
             modelAndView.addObject("user", user);
+            modelAndView.addObject("userForMail", new User());
 
         } catch (Exception exc) {
-            return new ModelAndView("/home");
+            return new ModelAndView("home");
         }
         return modelAndView;
     }

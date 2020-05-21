@@ -36,6 +36,7 @@ public class UserController {
     @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
     public ModelAndView login() {
         ModelAndView model = new ModelAndView();
+        model.addObject("userForMail", new User());
         model.setViewName("user/login");
         return model;
     }
@@ -45,6 +46,7 @@ public class UserController {
         ModelAndView model = new ModelAndView();
         User user = new User();
         model.addObject("user", user);
+        model.addObject("userForMail", new User());
         model.setViewName("user/signup");
         return model;
     }
@@ -55,6 +57,7 @@ public class UserController {
         User user = new User();
         user.setSeller(true);
         model.addObject("user", user);
+        model.addObject("userForMail", new User());
         model.setViewName("user/signup_seller");
         return model;
     }
@@ -118,7 +121,7 @@ public class UserController {
                     .getAuthorities()
                     .stream()
                     .anyMatch(r -> r.getAuthority().equals(Roles.SELLER.toString()))) {
-                viewName = "/flowerSeller_index";
+                viewName = "flowerSeller";
             } else if (authentication
                     .getAuthorities()
                     .stream()
@@ -127,6 +130,7 @@ public class UserController {
             }
         }
 
+        model.addObject("userForMail", new User());
         model.addObject("flowers", flowerService.listAll());
         model.setViewName(viewName);
 

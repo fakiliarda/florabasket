@@ -82,7 +82,7 @@
         <nav class="amado-nav">
             <ul>
                 <li><a th:href="@{home}">Home</a></li>
-                <li><a th:href="@{seller_order}">Orders</a></li>
+                <li><a th:href="@{sellerOrder}">Orders</a></li>
                 <li class="active"><a th:href="@{release}">Release Flower</a></li>
 
                 <!--                    <li><a th:href="@{shop}">Shop</a></li>-->
@@ -179,7 +179,7 @@
 
                     <!--                            <div class="list-group" th:each="order : ${orders}">-->
                     <!--                                <tr class='clickable-row'-->
-                    <!--                                    th:onclick="'window.location.href = \'' + @{/seller_order/{id}(id=${order.id})} + '\''" style="cursor: pointer">-->
+                    <!--                                    th:onclick="'window.location.href = \'' + @{/sellerOrder/{id}(id=${order.id})} + '\''" style="cursor: pointer">-->
                     <!--                                    <td class="cart_product_img">-->
                     <!--                                        <a href="#"><img th:src="${order.flower?.imagelink}" alt="Product"></a>-->
                     <!--                                    </td>-->

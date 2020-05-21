@@ -42,6 +42,22 @@ public class SellerController {
         this.cartService = cartService;
     }
 
+    @RequestMapping(value = {"/flowerSeller"}, method = RequestMethod.GET)
+    public ModelAndView flowerSellerIndex() {
+        ModelAndView model = new ModelAndView();
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findByEmail(auth.getName());
+        if (user != null) {
+            model.addObject("username", user.getFirstname() + " " + (user.getSurname() != null ? user.getSurname() : (user.isSeller() ? "(Seller)" : "(Courier)")));
+            model.addObject("signout", "Sign out");
+        }
+        model.addObject("flowers", flowerService.listAll());
+
+        model.setViewName("flowerSeller");
+        return model;
+    }
+
     @RequestMapping(value = {"/release"})
     public ModelAndView release() {
 
@@ -63,7 +79,7 @@ public class SellerController {
         model.addObject("flowerToRelease", flowerToRelease);
         model.addObject("sellingFlowers", sellingFlowerList);
 
-        model.setViewName("/release");
+        model.setViewName("release");
         return model;
     }
 
@@ -76,7 +92,7 @@ public class SellerController {
     }
 
 
-    @RequestMapping(value = {"/seller_order"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/sellerOrder"}, method = RequestMethod.GET)
     public ModelAndView sellerOrder(@ModelAttribute("id") String orderId) {
 
         ModelAndView model = new ModelAndView();
@@ -97,23 +113,23 @@ public class SellerController {
         model.addObject("orders", orderList);
         model.addObject("user", seller);
         model.addObject("orderToAssign", order);
-        model.setViewName("/seller_order");
+        model.setViewName("sellerOrder");
         return model;
     }
 
-    @RequestMapping(value = {"/seller_order/{id}"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/sellerOrder/{id}"}, method = RequestMethod.GET)
     public String sellerOrderItemSelected(RedirectAttributes redirectAttributes, @PathVariable("id") Long orderId) {
         redirectAttributes.addFlashAttribute("id", orderId);
-        return "redirect:/seller_order";
+        return "redirect:/sellerOrder";
     }
 
-    @RequestMapping(value = {"/seller_order/assign/{id}"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/sellerOrder/assign/{id}"}, method = RequestMethod.POST)
     public String sellerOrderAssign(RedirectAttributes redirectAttributes, @Valid Orders orders, @PathVariable("id") Long orderId) {
         Orders order = ordersService.findById(orderId);
         order.setCourier(orders.getCourier());
         ordersService.updateOrderAssigned(order);
         redirectAttributes.addFlashAttribute("id", orders.getId());
-        return "redirect:/seller_order";
+        return "redirect:/sellerOrder";
     }
 
 }

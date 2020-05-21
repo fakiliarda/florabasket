@@ -63,7 +63,7 @@ public class CourierController {
 //        model.addObject("delivered", delivered);
         model.addObject("orders", orderList);
         model.addObject("orderToResponse", order);
-        model.setViewName("/c_order_list");
+        model.setViewName("c_order_list");
         return model;
     }
 

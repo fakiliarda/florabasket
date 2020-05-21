@@ -148,6 +148,10 @@
                                            placeholder="Town" value="">
                                 </div>
 
+                                <div class="col-md-12 mb-3">
+                                    <input type="password" th:field="*{password}" class="form-control" id="password" value="" placeholder="Password*" required>
+                                </div>
+
                                 <div class="col-12 mb-3">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" id="seller" name="job" th:field="*{seller}" th:value="true"/>Seller
@@ -155,6 +159,13 @@
 
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" id="courier" name="job" th:field="*{seller}" th:value="false"/>Courier
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mb-3">
+                                    <div class="form-control-feedback">
+                                        <span class="text-danger align-middle" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                                        </span>
                                     </div>
                                 </div>
 
@@ -189,9 +200,9 @@
             <!-- Newsletter Form -->
             <div class="col-12 col-lg-6 col-xl-5">
                 <div class="newsletter-form mb-100">
-                    <form action="#" method="post">
-                        <input type="email" name="email" class="nl-email" placeholder="Your E-mail">
-                        <input type="submit" value="Subscribe">
+                    <form th:action="@{/sendmail}" th:object="${userForMail}" method="post">
+                        <input class="nl-email" type="email" name="email" th:value="*{email}" placeholder="Your E-mail">
+                        <input type="submit" value="Subscribe" >
                     </form>
                 </div>
             </div>
